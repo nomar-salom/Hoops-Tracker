@@ -1,0 +1,8 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.formatOnSave": true,
+  "files.exclude": { "out": true, "release": true },
+  "search.exclude": { "out": true, "release": true, "node_modules": true, "package-lock.json": true },
+  "vitest.enable": true
+}

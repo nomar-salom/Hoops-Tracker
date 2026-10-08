@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug main process",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-vite",
+      "windows": { "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-vite.cmd" },
+      "runtimeArgs": ["dev", "--sourcemap"],
+      "env": { "REMOTE_DEBUGGING_PORT": "9222" },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug renderer (React UI)",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/src/renderer",
+      "timeout": 60000,
+      "presentation": { "hidden": true }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug app (main + UI)",
+      "configurations": ["Debug main process", "Debug renderer (React UI)"],
+      "presentation": { "order": 1 }
+    }
+  ]
+}
