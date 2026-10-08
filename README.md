@@ -6,19 +6,6 @@ Desktop basketball stat tracker (Electron + React + TypeScript + Tailwind). Even
 - **Review any quarter and any player's shots; End game / Reopen game**: see `CHANGELOG.md`.
 - **Show / hide each team's shots on the court**: the *Shots* toggles under the court, or `Shift+H` / `Shift+A`. See `CHANGELOG.md`.
 
-## Windows installer
-Two ready-made files come from `npm run dist` / `npm run dist:portable` (output goes to `release/`):
-- **`Hoops-Tracker-Setup-<version>.exe`**: a normal installer. Installs just for the current user (no administrator password), creates Desktop and Start Menu shortcuts, appears in Settings > Apps, and lets you pick the folder.
-- **`Hoops-Tracker-Portable-<version>.exe`**: a single file you can run from a USB stick or a locked-down school computer, with nothing to install.
-
-**Your saved games are never deleted by an uninstall or an upgrade.** They live in `%APPDATA%\hoops-tracker` (autosave plus an `archive` folder of backups). The dev build and the installed app use that same folder, so a game in progress carries over.
-
-**The first time you run it, Windows SmartScreen will say "Windows protected your PC / Unknown publisher".** That is because the app is not code-signed (a certificate costs money). Click **More info**, then **Run anyway**. To remove the warning for good you'd buy a code-signing certificate and add it to `electron-builder.yml`.
-
-Build it yourself (best done on Windows, where the app's icon and version info are stamped natively): `npm install`, then `npm run dist`. Requires Windows 10 or 11, 64-bit. No auto-update is configured. To update, just run the newer installer: it replaces the old version in place (one Start Menu entry, one Add/Remove Programs entry) and leaves your saved games alone. This was tested by installing the new version over the previous release.
-
-Verified: install, shortcuts, Add/Remove Programs entry, quiet uninstall and "saved games survive uninstall" were run against the real installer; the packaged app passes the end-to-end suite (`npm run test:e2e`, set `EXE` to test an installed build).
-
 ## Quick start (VS Code)
 1. Unzip, then **File > Open Folder** and pick the `hoops-tracker` folder that contains `package.json`.
 2. In the terminal (`` Ctrl+` ``): `npm install` (the first time it also downloads Electron, ~100 MB).
